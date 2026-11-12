@@ -16,6 +16,7 @@ public final class Rules {
         public int x, y, z, radius;
         public Integer range;          // null = default range
         public boolean always;         // work with no players nearby
+        public boolean noai;           // mobs from this region spawn with AI disabled
         public Integer count, minDelay, maxDelay, maxNearby, spawnRange; // null = spawner's own value
         public double loot = 1.0, xp = 1.0;
         public Set<String> mobs = new LinkedHashSet<>(); // empty = any mob
