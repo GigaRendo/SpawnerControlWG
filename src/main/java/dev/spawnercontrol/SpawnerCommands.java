@@ -83,6 +83,8 @@ public final class SpawnerCommands {
         id.then(intProp("spawnrange", 1, 32, true, (r, v) -> r.spawnRange = v));
         id.then(Commands.literal("always").then(Commands.argument("value", BoolArgumentType.bool())
                 .executes(c -> edit(c, r -> r.always = BoolArgumentType.getBool(c, "value")))));
+        id.then(Commands.literal("noai").then(Commands.argument("value", BoolArgumentType.bool())
+        .executes(c -> edit(c, r -> r.noai = BoolArgumentType.getBool(c, "value")))));
         id.then(Commands.literal("loot").then(Commands.argument("value", DoubleArgumentType.doubleArg(0, 100))
                 .executes(c -> edit(c, r -> r.loot = DoubleArgumentType.getDouble(c, "value")))));
         id.then(Commands.literal("xp").then(Commands.argument("value", DoubleArgumentType.doubleArg(0, 100))
