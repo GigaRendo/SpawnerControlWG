@@ -18,6 +18,7 @@ public final class SpawnerContext {
         if (r == null) return;
         if (r.loot != 1.0) e.addTag("sc_loot_" + r.loot);
         if (r.xp != 1.0) e.addTag("sc_xp_" + r.xp);
+        if (r.noai && e instanceof net.minecraft.world.entity.Mob mob) mob.setNoAi(true);
     }
 
     public static double mult(Entity e, String prefix) {
