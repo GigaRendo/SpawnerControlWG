@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "spawnercontrol",
+  "version": "${version}",
+  "name": "Spawner Control",
+  "description": "Disables all mob spawners and lets ops enable them per mob type or per region.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": { "main": ["dev.spawnercontrol.SpawnerControlMod"] },
+  "mixins": ["spawnercontrol.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
