@@ -21,12 +21,28 @@ public final class SpawnerContext {
     }
 
     public static double mult(Entity e, String prefix) {
-        for (String t : e.getTags()) {
+        for (String t : tagsOf(e)) {
             if (t.startsWith(prefix)) {
                 try { return Double.parseDouble(t.substring(prefix.length())); } catch (NumberFormatException ignored) {}
             }
         }
         return 1.0;
+    }
+
+    private static Method TAGS_METHOD;
+
+    /** Entity tag getter was renamed across versions; try both names. */
+    @SuppressWarnings("unchecked")
+    private static java.util.Set<String> tagsOf(Entity e) {
+        try {
+            if (TAGS_METHOD == null) {
+                try { TAGS_METHOD = Entity.class.getMethod("entityTags"); }
+                catch (NoSuchMethodException ex) { TAGS_METHOD = Entity.class.getMethod("getTags"); }
+            }
+            return (java.util.Set<String>) TAGS_METHOD.invoke(e);
+        } catch (Exception ex) {
+            return java.util.Collections.emptySet();
+        }
     }
 
     private static Field DATA_FIELD;
